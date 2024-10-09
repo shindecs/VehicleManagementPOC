@@ -1,8 +1,9 @@
 ﻿@page
 @using Newtonsoft.Json
+@using Kendo.Mvc.UI
 @model WebApplication2.Pages.Vehicles.SearchVehicleEstimateModel
-@{
-}
+@* @{
+} *@
 
    
 
@@ -153,7 +154,28 @@
 
 				<div class="card  mt-5 mb-5 collapse" id="collapseExample">
 					<!--begin::Card body-->
-					<div class="card-body border border-primary px-1 py-0 shadow dashbox bg-white">
+					@(Html.Kendo().Grid(Model.Vehicles)
+												.Name("Grid")
+												.Columns(columns =>
+												{
+													columns.Bound(p => p.Make).Title("Make").Width(130);
+													columns.Bound(p => p.Model).Title("Model").Width(130);
+													columns.Bound(p => p.Year).Title("Units In Stock").Width(130);
+													columns.Bound(p => p.VIN).Width(130);
+													columns.Bound(p => p.Color).Width(130);
+													columns.Bound(p => p.CreatedDate).Format("{0:MM/dd/yyyy}").Width(130);
+												})
+												.Pageable()
+												.Sortable()
+												.Scrollable(scr => scr.Height(430))
+												.Filterable()
+												.DataSource(dataSource => dataSource
+												.Ajax()
+												.PageSize(20)
+												.ServerOperation(false)
+												)
+												)
+					@* <div class="card-body border border-primary px-1 py-0 shadow dashbox bg-white">
 						<div class="table-responsive">
 							<table class="table table-row-gray-500 align-middle table-sm table-row-dashed">
 								<thead>
@@ -335,7 +357,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</div> *@
 					<!--end::Card body-->
 				</div>
 
