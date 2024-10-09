@@ -3,13 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication2</title>
+    <title>@ViewData["Title"] - Vehicle Management</title>
 	<link href="/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 	<link href="/css/style.css" rel="stylesheet" type="text/css" />
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApplication2.styles.css" asp-append-version="true" />
 	<link href="https://kendo.cdn.telerik.com/themes/7.0.2/default/default-ocean-blue.css" rel="stylesheet" type="text/css" />
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
@@ -30,7 +29,7 @@
 				<div class="app-container container-fluid d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
 					<!--begin::Logo-->
 					<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-						<a href="/Vehicles/SearchVehicleEstimate">
+						<a href="/">
 							<img alt="Logo" src="/images/logo.png" class="h-50px app-sidebar-logo-default" />
 						</a>
 					</div>
@@ -47,7 +46,7 @@
 															.Name("menuImages")
 															.Items(items =>
 															{
-																items.Add().Text("Home");
+																items.Add().Text("Home").Url(Url.Page("/Index"));
 
 																items.Add().Text("Material Part")
 																.Items(children =>
@@ -154,45 +153,9 @@
 							<!--begin::Toolbar container-->
 							<div id="kt_app_toolbar_container" class="app-container container-fluid d-flex flex-stack">
 								<!--begin::Page title-->
-								<div class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
-									<!--begin::Title-->
-									<h1 class="page-heading d-flex text-dark fw-bold fs-2 flex-column justify-content-center my-0">Search Vehicle Estimate</h1>
-									<span class="h-20px border-gray-300 border-start mx-4"></span>
-									<!--end::Title-->
-									<!--begin::Breadcrumb-->
-									<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
-										<!--begin::Item-->
-										<li class="breadcrumb-item text-muted">
-											<a href="#" class="text-dark text-hover-primary">Home</a>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-400 w-5px h-2px"></span>
-										</li>
-										<!--end::Item-->
-										<!--begin::Item-->
-										<li class="breadcrumb-item">
-											<a href="#" class="text-dark text-hover-primary">Vehicle Estimate</a>
-										</li>
-										<li class="breadcrumb-item">
-											<span class="bullet bg-gray-400 w-5px h-2px"></span>
-										</li>
-										<li class="breadcrumb-item nav-link">
-											<a href="/Vehicles/SearchVehicleEstimate" class="text-dark text-hover-primary">Search Vehicle Estimate</a>
-										</li>
-
-									</ul>
-
-								</div>
+								
 								<!--end::Page title-->
-								<div class="ml-auto">
-									@(Html.Kendo().Button()
-																			.Name("addvehicle")
-																			.ThemeColor(ThemeColor.Primary)
-																			.Content("Add Vehicle"))
-									@* <a href="add-vehicle.html" class="btn btn-blue px-4 btn-sm" id="addvehicle">Add Vehicle</a> *@
-
+								
 								</div>
 							</div>
 							<!--end::Toolbar container-->

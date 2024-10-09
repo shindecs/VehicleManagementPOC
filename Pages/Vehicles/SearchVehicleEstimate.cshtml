@@ -1,371 +1,314 @@
 ﻿@page
 @using Newtonsoft.Json
 @using Kendo.Mvc.UI
-@model WebApplication2.Pages.Vehicles.SearchVehicleEstimateModel
+@model VehicleManagement.Pages.Vehicles.SearchVehicleEstimateModel
 @* @{
 } *@
 
    
 
 <div id="kt_app_content" class="app-content flex-column-fluid">
-	<!--begin::Content container-->
-	<div id="kt_app_content_container" class="app-container container-fluid">
-		<!--begin::Row-->
-		<div class="row">
+    <div class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+        <!--begin::Title-->
+        <h1 class="page-heading d-flex text-dark fw-bold fs-2 flex-column justify-content-center my-0">Search Vehicle Estimate</h1>
+        <span class="h-20px border-gray-300 border-start mx-4"></span>
+        <!--end::Title-->
+        <!--begin::Breadcrumb-->
+        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
+            <!--begin::Item-->
+            <li class="breadcrumb-item text-muted">
+                <a href="/" class="text-dark text-hover-primary">Home</a>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <!--end::Item-->
+            <!--begin::Item-->
+            <li class="breadcrumb-item">
+                <a href="#" class="text-dark text-hover-primary">Vehicle Estimate</a>
+            </li>
+            <li class="breadcrumb-item">
+                <span class="bullet bg-gray-400 w-5px h-2px"></span>
+            </li>
+            <li class="breadcrumb-item nav-link">
+                <a href="/Vehicles/SearchVehicleEstimate" class="text-dark text-hover-primary">Search Vehicle Estimate</a>
+            </li>
 
-			<!--begin::Col-->
-			<div class="col-md-12">
-				<div class="dashbox shadow bg-white">
-					<div class="row d-flex">
+        </ul>
+
+    </div>
+    @(
+            Html.Kendo().PanelBar()
+            .Name("panelbar")
+            .ExpandMode(PanelBarExpandMode.Single)
+            .Items(panelbar =>
+            {
+                panelbar.Add().Text("Search")
+            .Expanded(true)
+            .Selected(true)
+            .Content(@<div class="dashbox shadow bg-white">
+        <div class="row d-flex">
 
 
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Vehicle Series</label>
-							@(Html.Kendo().DropDownList()
-														.Name("series")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="series" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Vehicle Series</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Vehicle Series</label>
+                @(Html.Kendo().DropDownList()
+                .Name("series")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Vehicle Description</label>
+                @(Html.Kendo().DropDownList()
+                .Name("description")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Engine</label>
+                @(Html.Kendo().DropDownList()
+                .Name("engine")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Transmission</label>
+                @(Html.Kendo().DropDownList()
+                .Name("transmission")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Vehicle Differential</label>
+                @(Html.Kendo().DropDownList()
+                .Name("vd")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Vehicle Make</label>
+                @(Html.Kendo().DropDownList()
+                .Name("vmake")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Vehicle Model</label>
+                @(Html.Kendo().DropDownList()
+                .Name("vmodel")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+            <div class="col-sm-3 mb-4">
+                <label class="form-label fw-bold">Year</label>
+                @(Html.Kendo().DropDownList()
+                .Name("year")
+                .DataTextField("Name")   // The text to display in the dropdown
+                .DataValueField("ID")    // The value to send to the backend when an option is selected
+                .BindTo(Model.Options)   // Binding the data from the backend
+                .OptionLabel("Select an option") // Placeholder label
+                )
+            </div>
+        </div>
+        <div class="text-end">
+            @* <a href="#" id="search" class="btn btn-blue px-4 h-40px " type="button" data-toggle="collapse" data-target="#collapseExample">Search</a> *@
+            @(Html.Kendo().Button()
+            .Name("search") // Sets the name for the button
+            .Content("Search") // The text displayed on the button
+            .HtmlAttributes(new { id = "search", @class = "btn btn-blue px-4 h-40px", type = "button", data_toggle = "collapse", data_target = "#collapseExample" })
+           // .Events(e => e.Click("onSearchClick")) // Optional: attach a click event
+            )
+        </div>
+    </div>
+            );
+                panelbar.Add().Text("Search Results")
+            .Expanded(false)
+            .Selected(false)
+            .Content(@<div class="card  mt-2 mb-5 collapse" id="collapseExample">
+        <!--begin::Card body-->
+        @(Html.Kendo().Grid(Model.Vehicles)
+        .Name("Grid")
+        .Columns(columns =>
+        {
+        columns.Bound(p => p.Make).Title("Make").Width(130);
+        columns.Bound(p => p.Model).Title("Model").Width(130);
+        columns.Bound(p => p.Year).Title("Units In Stock").Width(130);
+        columns.Bound(p => p.VIN).Width(130);
+        columns.Bound(p => p.Color).Width(130);
+        columns.Bound(p => p.CreatedDate).Format("{0:MM/dd/yyyy}").Width(130);
+        })
+        .Pageable()
+        .Sortable()
+        .Scrollable(scr => scr.Height(430))
+        .Filterable()
+        .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5)
+        .ServerOperation(false)
+        )
+        )
+
+    </div>
+        );
+                panelbar.Add().Text("Add Vehicle")
+            .Expanded(false)
+            .Selected(false)
+            .Content(@<div class="card  mt-2 mb-5 " id="addv">
+		<div class="col-md-12">
+			<div class="card border mb-3 rounded-0">
+@* 				<div class="card-header bg-darkblue rounded-0">
+					<h2 class="card-title fw-bolder fs-2 text-white">Add Vehicle Estimate</h2>
+				</div> *@
+				<div class="card-body pt-3 rounded-0">
+					<p class="text-end text-red mb-1">* indicates mandatory</p>
+					<div class="form-group row">
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Vehicle:</label>
+                            @(Html.Kendo().TextBox()
+                            .Name("vehicleEmail") // Name of the TextBox
+                            .Placeholder("Enter Vehicle") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control", type = "email" }) // Set the class and type
+                            )
+
+
 						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Vehicle Description</label>
-							@(Html.Kendo().DropDownList()
-														.Name("description")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="description" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Vehicle Description</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
-						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Engine</label>
-							@(Html.Kendo().DropDownList()
-														.Name("engine")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="engine" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Engine</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
-						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Transmission</label>
-							@(Html.Kendo().DropDownList()
-														.Name("transmission")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="transmission" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Transmission</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
-						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Vehicle Differential</label>
-							@(Html.Kendo().DropDownList()
-														.Name("vd")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="vd" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Vehicle Differential</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
-						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Vehicle Make</label>
-							@(Html.Kendo().DropDownList()
-														.Name("vmake")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="vmake" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Vehicle Make</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
-						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Vehicle Model</label>
-							@(Html.Kendo().DropDownList()
-														.Name("vmodel")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="vmodel" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Vehicle Model</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
-						</div>
-						<div class="col-sm-3 mb-4">
-							<label class="form-label fw-bold">Year</label>
-							@(Html.Kendo().DropDownList()
-														.Name("year")
-														.DataTextField("Name")   // The text to display in the dropdown
-														.DataValueField("ID")    // The value to send to the backend when an option is selected
-														.BindTo(Model.Options)   // Binding the data from the backend
-														.OptionLabel("Select an option") // Placeholder label
-														)
-							@* <input id="year" /> *@
-							@* <select class="form-select py-1 rounded-0" aria-label="Default select example" id="selectbox">
-								<option selected>Select Year</option>
-								<option value="1">Option 1</option>
-								<option value="1">Option 2</option>
-							</select> *@
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Make:</label>
+                            @(Html.Kendo().TextBox()
+                            .Name("make") // Name of the TextBox
+                            .Placeholder("Enter Make") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )
+
 						</div>
 					</div>
-					<div class="text-end"><a href="#" id="search" class="btn btn-blue px-4 h-40px " type="button" data-toggle="collapse" data-target="#collapseExample">Search</a></div>
-				</div>
-
-
-				<div class="card  mt-5 mb-5 collapse" id="collapseExample">
-					<!--begin::Card body-->
-					@(Html.Kendo().Grid(Model.Vehicles)
-												.Name("Grid")
-												.Columns(columns =>
-												{
-													columns.Bound(p => p.Make).Title("Make").Width(130);
-													columns.Bound(p => p.Model).Title("Model").Width(130);
-													columns.Bound(p => p.Year).Title("Units In Stock").Width(130);
-													columns.Bound(p => p.VIN).Width(130);
-													columns.Bound(p => p.Color).Width(130);
-													columns.Bound(p => p.CreatedDate).Format("{0:MM/dd/yyyy}").Width(130);
-												})
-												.Pageable()
-												.Sortable()
-												.Scrollable(scr => scr.Height(430))
-												.Filterable()
-												.DataSource(dataSource => dataSource
-												.Ajax()
-												.PageSize(20)
-												.ServerOperation(false)
-												)
-												)
-					@* <div class="card-body border border-primary px-1 py-0 shadow dashbox bg-white">
-						<div class="table-responsive">
-							<table class="table table-row-gray-500 align-middle table-sm table-row-dashed">
-								<thead>
-									<tr class="fw-bold bg-light">
-										<th class="ps-3 fw-bold">Vehicle</th>
-										<th class="ps-3 fw-bold">Make</th>
-										<th class="ps-3 fw-bold">Model</th>
-										<th class="ps-3 fw-bold">Year</th>
-										<th class="ps-3 fw-bold">Engine</th>
-										<th class="ps-3 fw-bold">Transmission</th>
-										<th class="ps-3 fw-bold">Differential</th>
-										<th class="ps-3 fw-bold">Updated By</th>
-										<th class="ps-3 fw-bold">Updated Date</th>
-										<th class="text-center fw-bold">Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="btnDelete" data-id="1">
-										<td class="ps-3">Orion5 DSL LE (7000-7134)</td>
-										<td class="ps-3">Orion</td>
-										<td class="ps-3">5</td>
-										<td class="ps-3">1996</td>
-										<td class="ps-3">S50 DDEC III</td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Joe Allwyn</td>
-										<td class="ps-3">10/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<a class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px; background-color:white" title="Delete"></i></span></a>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="2">
-										<td class="ps-3">GMC TGH (2000-2499)</td>
-										<td class="ps-3">GMC</td>
-										<td class="ps-3">TGH5307N</td>
-										<td class="ps-3">1983</td>
-										<td class="ps-3">6V71</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Mark Ascot</td>
-										<td class="ps-3">09/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="3">
-										<td class="ps-3">GMC TC40102N (6210-6293)</td>
-										<td class="ps-3">GMC/MCI</td>
-										<td class="ps-3">TC40102N</td>
-										<td class="ps-3">1987</td>
-										<td class="ps-3">6V71</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Daniel Abrams</td>
-										<td class="ps-3">08/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="4">
-										<td class="ps-3">Flyer LF (7300-7350)</td>
-										<td class="ps-3">New Flyer</td>
-										<td class="ps-3">D40LF</td>
-										<td class="ps-3">1998</td>
-										<td class="ps-3">S50DDEC IV</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Joe Allwyn</td>
-										<td class="ps-3">07/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="5">
-										<td class="ps-3">Nova RTS (7200-7251)</td>
-										<td class="ps-3">Nova</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">1997</td>
-										<td class="ps-3">S50DDEC III</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Mark Ascot</td>
-										<td class="ps-3">06/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="6">
-										<td class="ps-3">Orion CNG LE (9400-9449)</td>
-										<td class="ps-3">Orion</td>
-										<td class="ps-3">5</td>
-										<td class="ps-3">1997</td>
-										<td class="ps-3">S50DDEC II</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Daniel Abrams</td>
-										<td class="ps-3">06/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-
-									<tr class="btnDelete" data-id="7">
-										<td class="ps-3">Orion 7 DSL LF</td>
-										<td class="ps-3">Orion</td>
-										<td class="ps-3">7</td>
-										<td class="ps-3">2003</td>
-										<td class="ps-3">S50EGR </a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Joe Allwyn</td>
-										<td class="ps-3">05/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="8">
-										<td class="ps-3">Orion 7 DSL LE</td>
-										<td class="ps-3">Orion</td>
-										<td class="ps-3">5</td>
-										<td class="ps-3">1996</td>
-										<td class="ps-3">S50 DDEC III</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Mark Ascot</td>
-										<td class="ps-3">06/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-									<tr class="btnDelete" data-id="9">
-										<td class="ps-3">Orion 5 DSL LE</td>
-										<td class="ps-3">Orion</td>
-										<td class="ps-3">5</td>
-										<td class="ps-3">1997</td>
-										<td class="ps-3">M11</a></td>
-										<td class="ps-3">Manual</td>
-										<td class="ps-3">2</td>
-										<td class="ps-3">Daniel Abrams</td>
-										<td class="ps-3">06/05/2024</td>
-										<td class="text-center">
-											<a class="btn btn-blue me-1 px-2 py-1 w-32px h-30px" href="edit-vehicle.html" role="button" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit" data-kt-initialized="1" title="Edit"><i class="icon-xl la la-edit text-white p-0" style="font-size:16px;" title="Edit"></i></a>
-											<button class="btn btn-red me-1 px-2 py-1 w-32px h-30px btnDelete" title="Delete"><span data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete" data-kt-initialized="1"><i class="la la-trash text-white p-0" style="font-size:16px;" title="Delete"></i></span></button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+					<div class="form-group row mt-2">
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Model: </label>
+                            @(Html.Kendo().TextBox()
+                            .Name("model") // Name of the TextBox
+                            .Placeholder("Enter Model") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )
 						</div>
-						<div class="row mt-5 px-5 mb-5">
-							<div class="col-6 d-inline-flex">
-								<span class="pt-2">Items per page</span> <select class="form-select py-1 rounded-0 w-75px ms-3" aria-label="Default select example">
-									<option value="1">5</option>
-									<option value="2" selected="">10</option>
-									<option value="3">50</option>
-									<option value="4">100</option>
-								</select>
-							</div>
-							<div class="col-6 justify-content-end d-flex">
-								<div class="page-item me-5 mt-2">Showing 1 to 10 of 57 entries</div>
-								<ul class="pagination ">
-
-									<li class="page-item">
-										<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-									</li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item"><a class="page-link" href="#">2</a></li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item">
-										<a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</div>
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Year:</label>
+                            @(Html.Kendo().TextBox()
+                            .Name("Year") // Name of the TextBox
+                            .Placeholder("Enter Year") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )
 						</div>
-					</div> *@
-					<!--end::Card body-->
-				</div>
 
+					</div>
+					<div class="form-group row mt-2">
+
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Engine: <span class="text-red">*</span></label>
+                            @(Html.Kendo().TextBox()
+                            .Name("engine") // Name of the TextBox
+                            .Placeholder("Enter Engine") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )
+						</div>
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Transmission: <span class="text-red">*</span></label>
+                            @(Html.Kendo().TextBox()
+                            .Name("transmission") // Name of the TextBox
+                            .Placeholder("Enter Transmission") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )>
+						</div>
+					</div>
+
+					<div class="form-group row mt-2">
+
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Differential: <span class="text-red">*</span></label>
+                            @(Html.Kendo().TextBox()
+                            .Name("Differential") // Name of the TextBox
+                            .Placeholder("Enter Differential") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )
+						</div>
+						<div class="col-lg-6">
+							<label class="form-label fw-bold">Project Description: <span class="text-red">*</span></label>
+                            @(Html.Kendo().TextBox()
+                            .Name("Description") // Name of the TextBox
+                            .Placeholder("Enter Project Description") // Placeholder text
+                            .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
+                            )
+						</div>
+					</div>
+
+
+					<div class="mt-2">
+						@* <a href="#" class="btn btn-red px-7 me-5 h-40px">
+						
+						</a> *@
+                        @* <span class="indicator-label text-white">Cancel</span> *@
+                        @(Html.Kendo().Button()
+                        .Name("cancel")
+                        .Content("Cancel")
+                       // .HtmlAttributes(new { id = "cancel", @class = "btn btn-red", type = "button" })
+                        );
+
+                        @(Html.Kendo().Button()
+                        .Name("save")
+                        .Content("Save")
+                        //.HtmlAttributes(new { id = "save", @class = "btn btn-blue", type = "button" })
+                        );
+
+						@* <a href="search-vehicle.html" class="btn btn-blue px-10 h-40px" id="btnShow">
+							 <span class="indicator-label">Save</span> 
+
+                            
+						</a> *@
+
+
+					</div>
+
+				</div>
 			</div>
-			<!--end::Col-->
+
+
+
 
 		</div>
-	</div>
+		<!--end::Col-->
+
+    </div>
+        );
+
+            }));
+
+
+
+
+
 
 
 </div>
@@ -373,6 +316,14 @@
 @section scripts {
 	<script>
 		$(document).ready(function () {
+
+            $("#search").on("click", function () {
+                // Get the Kendo PanelBar widget
+                var panelBar = $("#panelbar").data("kendoPanelBar");
+
+                // Expand the second panel (index 1 since it's zero-based)
+                panelBar.expand($("li:nth-child(2)", panelBar.element));
+            });
 			var dataSource = new kendo.data.DataSource({
 				data: [
 					{ ID: 1, Name: "Option 1" },

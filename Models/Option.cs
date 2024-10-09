@@ -1,4 +1,4 @@
-﻿namespace WebApplication2.Models
+﻿namespace VehicleManagement.Models
 {
 	public class Option
 	{

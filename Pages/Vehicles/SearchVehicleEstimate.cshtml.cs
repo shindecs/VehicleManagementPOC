@@ -4,9 +4,9 @@ using Microsoft.CodeAnalysis.Options;
 using System.Xml.Linq;
 using Telerik.SvgIcons;
 using VehicleManagementPOC.Models;
-using WebApplication2.Models;
+using VehicleManagement.Models;
 
-namespace WebApplication2.Pages.Vehicles
+namespace VehicleManagement.Pages.Vehicles
 {
     public class SearchVehicleEstimateModel : PageModel
     {
