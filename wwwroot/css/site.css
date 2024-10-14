@@ -18,5 +18,166 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Avenir';
 }
+
+
+.app-header-menu .k-menu .k-menu-item .k-menu-link {
+    color: var(--kt-gray-700) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    flex: 0 0 100% !important;
+    padding: .65rem 1rem !important;
+    transition: none !important;
+    outline: 0 !important;
+    border-radius: .475rem;
+}
+
+.k-menu-link .k-image {
+    width: 1.5rem !important;
+    margin-right: .2rem !important;
+}
+
+.k-menu .k-state-highlight {
+
+}
+
+@media (min-width: 992px) {
+    .k-menu .k-state-highlight {
+        transition: color .2s ease;
+        background-color: #18405b;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+.k-menu .k-state-highlight .k-menu-link-text {
+    color: #ffffff !important;
+}
+
+.k-menu .k-state-highlight .k-menu-expand-arrow {
+    color: #ffffff !important;
+}
+
+.k-menu .k-menu-item {
+    border-radius: .475rem !important;
+}
+
+.k-menu .k-menu-item .k-child-animation-container .k-menu-link-text{
+   color: #244059 !important;
+}
+
+.k-panelbar-item .k-selected {
+    background-color: #18405b !important;
+}
+
+.k-panelbar-item .k-selected .k-panelbar-item-text {
+    font-weight: 700 !important;
+}
+
+.app-content {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+@media (min-width: 1200px) {
+    .fs-2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+.k-dropdownlist {
+    border-color: #b4b6b7 !important;
+    box-shadow: none !important;
+    color: var(--kt-form-select-color) !important;
+    background-color: var(--kt-form-select-bg) !important;
+    background-image: var(--kt-form-select-indicator) !important;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) !important;
+    border-radius: 0 !important;
+    background-size: 14px;
+}
+
+.k-dropdownlist .k-input-button {
+    display: none !important;
+}
+
+.form-label {
+    margin-bottom: .5rem !important;
+    font-size: 1.05rem !important;
+    color: var(--kt-form-label-color) !important;
+    font-weight: 600 !important;
+}
+
+.form-control.k-input-inner, .form-group .form-control {
+    color: var(--kt-input-color) !important;
+    background-color: #FFFFFF !important;
+    border: 1px solid #a1a2a9 !important;
+    box-shadow: none !important;
+    display: block !important;
+    width: 100% !important;
+    padding: .775rem 1rem !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    line-height: 1.5 !important;
+    /*background-color: #fff !important;*/
+    background-clip: padding-box !important;
+    appearance: none !important;
+    border-radius: .475rem !important;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
+}
+
+.form-control.k-input-inner::placeholder {
+    opacity: 0.6;
+    font-family:inherit;
+}
+
+.mt-5 {
+    margin-top: 1.25rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 1rem !important;
+}
+
+.form-group .k-textbox.form-control {
+    padding: 0px !important;
+}
+
+.k-input.form-control {
+    border: none !important;
+}
+
+.btn-red, .btn-red:hover, .btn-red:active, .btn-red:focus {
+    background-color: #be0012 !important;
+    border-color: #be0012 !important;
+    color: var(--kt-text-white) !important;
+}
+
+.px-7 {
+    padding-right: 1.75rem !important;
+    padding-left: 1.75rem !important;
+}
+
+.me-5 {
+    margin-right: 1.25rem !important;
+}
+
+.btn-blue:hover {
+    opacity: 0.8;
+}
+
+@media (min-width: 992px) {
+    div:hover, main:hover, ol:hover, pre:hover, span:hover, ul:hover {
+        scrollbar-color: var(--kt-scrollbar-hover-color) transparent;
+    }
+}
+
+.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
+    border: 0;
+    padding: calc(.775rem + 0px) calc(1.5rem + 7px);
+}
+
+

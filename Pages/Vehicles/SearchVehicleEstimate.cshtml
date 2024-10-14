@@ -5,7 +5,7 @@
 @* @{
 } *@
 
-   
+
 
 <div id="kt_app_content" class="app-content flex-column-fluid">
     <div class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
@@ -41,13 +41,21 @@
     </div>
     @(
             Html.Kendo().PanelBar()
+
             .Name("panelbar")
+
             .ExpandMode(PanelBarExpandMode.Single)
+
             .Items(panelbar =>
+
             {
+
                 panelbar.Add().Text("Search")
+
             .Expanded(true)
+
             .Selected(true)
+
             .Content(@<div class="dashbox shadow bg-white">
         <div class="row d-flex">
 
@@ -139,14 +147,19 @@
             .Name("search") // Sets the name for the button
             .Content("Search") // The text displayed on the button
             .HtmlAttributes(new { id = "search", @class = "btn btn-blue px-4 h-40px", type = "button", data_toggle = "collapse", data_target = "#collapseExample" })
-           // .Events(e => e.Click("onSearchClick")) // Optional: attach a click event
+            // .Events(e => e.Click("onSearchClick")) // Optional: attach a click event
             )
         </div>
     </div>
+
             );
+
                 panelbar.Add().Text("Search Results")
+
             .Expanded(false)
+
             .Selected(false)
+
             .Content(@<div class="card  mt-2 mb-5 collapse" id="collapseExample">
         <!--begin::Card body-->
         @(Html.Kendo().Grid(Model.Vehicles)
@@ -172,21 +185,26 @@
         )
 
     </div>
-        );
+
+            );
+
                 panelbar.Add().Text("Add Vehicle")
+
             .Expanded(false)
+
             .Selected(false)
+
             .Content(@<div class="card  mt-2 mb-5 " id="addv">
-		<div class="col-md-12">
-			<div class="card border mb-3 rounded-0">
-@* 				<div class="card-header bg-darkblue rounded-0">
-					<h2 class="card-title fw-bolder fs-2 text-white">Add Vehicle Estimate</h2>
-				</div> *@
-				<div class="card-body pt-3 rounded-0">
-					<p class="text-end text-red mb-1">* indicates mandatory</p>
-					<div class="form-group row">
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Vehicle:</label>
+        <div class="col-md-12">
+            <div class="card border mb-3 rounded-0">
+                @* 				<div class="card-header bg-darkblue rounded-0">
+                <h2 class="card-title fw-bolder fs-2 text-white">Add Vehicle Estimate</h2>
+                </div> *@
+                <div class="card-body pt-3 rounded-0">
+                    <p class="text-end text-red mb-1">* indicates mandatory</p>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Vehicle:</label>
                             @(Html.Kendo().TextBox()
                             .Name("vehicleEmail") // Name of the TextBox
                             .Placeholder("Enter Vehicle") // Placeholder text
@@ -194,111 +212,111 @@
                             )
 
 
-						</div>
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Make:</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Make:</label>
                             @(Html.Kendo().TextBox()
                             .Name("make") // Name of the TextBox
                             .Placeholder("Enter Make") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
                             )
 
-						</div>
-					</div>
-					<div class="form-group row mt-2">
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Model: </label>
+                        </div>
+                    </div>
+                    <div class="form-group row mt-5">
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Model: </label>
                             @(Html.Kendo().TextBox()
                             .Name("model") // Name of the TextBox
                             .Placeholder("Enter Model") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
                             )
-						</div>
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Year:</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Year:</label>
                             @(Html.Kendo().TextBox()
                             .Name("Year") // Name of the TextBox
                             .Placeholder("Enter Year") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
                             )
-						</div>
+                        </div>
 
-					</div>
-					<div class="form-group row mt-2">
+                    </div>
+                    <div class="form-group row mt-5">
 
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Engine: <span class="text-red">*</span></label>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Engine: <span class="text-red">*</span></label>
                             @(Html.Kendo().TextBox()
                             .Name("engine") // Name of the TextBox
                             .Placeholder("Enter Engine") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
                             )
-						</div>
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Transmission: <span class="text-red">*</span></label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Transmission: <span class="text-red">*</span></label>
                             @(Html.Kendo().TextBox()
                             .Name("transmission") // Name of the TextBox
                             .Placeholder("Enter Transmission") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
-                            )>
-						</div>
-					</div>
+                            )
+                        </div>
+                    </div>
 
-					<div class="form-group row mt-2">
+                    <div class="form-group row mt-5">
 
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Differential: <span class="text-red">*</span></label>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Differential: <span class="text-red">*</span></label>
                             @(Html.Kendo().TextBox()
                             .Name("Differential") // Name of the TextBox
                             .Placeholder("Enter Differential") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
                             )
-						</div>
-						<div class="col-lg-6">
-							<label class="form-label fw-bold">Project Description: <span class="text-red">*</span></label>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="form-label fw-bold">Project Description: <span class="text-red">*</span></label>
                             @(Html.Kendo().TextBox()
                             .Name("Description") // Name of the TextBox
                             .Placeholder("Enter Project Description") // Placeholder text
                             .HtmlAttributes(new { @class = "form-control" }) // Set the class and type
                             )
-						</div>
-					</div>
+                        </div>
+                    </div>
 
 
-					<div class="mt-2">
-						@* <a href="#" class="btn btn-red px-7 me-5 h-40px">
-						
-						</a> *@
+                    <div class="mt-5">
+                        @* <a href="#" class="btn btn-red px-7 me-5 h-40px">
+
+                        </a> *@
                         @* <span class="indicator-label text-white">Cancel</span> *@
                         @(Html.Kendo().Button()
                         .Name("cancel")
                         .Content("Cancel")
-                       // .HtmlAttributes(new { id = "cancel", @class = "btn btn-red", type = "button" })
-                        );
+                        .HtmlAttributes(new { @class = "btn btn-red px-7 me-5" })
+                        )
 
                         @(Html.Kendo().Button()
                         .Name("save")
                         .Content("Save")
-                        //.HtmlAttributes(new { id = "save", @class = "btn btn-blue", type = "button" })
-                        );
+                        .HtmlAttributes(new { @class = "btn btn-blue" })
+                        )
 
-						@* <a href="search-vehicle.html" class="btn btn-blue px-10 h-40px" id="btnShow">
-							 <span class="indicator-label">Save</span> 
-
-                            
-						</a> *@
+                        @* <a href="search-vehicle.html" class="btn btn-blue px-10 h-40px" id="btnShow">
+                        <span class="indicator-label">Save</span>
 
 
-					</div>
-
-				</div>
-			</div>
+                        </a> *@
 
 
+                    </div>
+
+                </div>
+            </div>
 
 
-		</div>
-		<!--end::Col-->
+
+
+        </div>
+        <!--end::Col-->
 
     </div>
         );
@@ -314,8 +332,8 @@
 </div>
 
 @section scripts {
-	<script>
-		$(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
             $("#search").on("click", function () {
                 // Get the Kendo PanelBar widget
@@ -324,82 +342,82 @@
                 // Expand the second panel (index 1 since it's zero-based)
                 panelBar.expand($("li:nth-child(2)", panelBar.element));
             });
-			var dataSource = new kendo.data.DataSource({
-				data: [
-					{ ID: 1, Name: "Option 1" },
-					{ ID: 2, Name: "Option 2" },
-					{ ID: 3, Name: "Option 3" },
-					// More cities...
-				],
-				sort: { field: "Name", dir: "asc" }
-			});
+            var dataSource = new kendo.data.DataSource({
+                data: [
+                    { ID: 1, Name: "Option 1" },
+                    { ID: 2, Name: "Option 2" },
+                    { ID: 3, Name: "Option 3" },
+                    // More cities...
+                ],
+                sort: { field: "Name", dir: "asc" }
+            });
 
-			$("#series").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#description").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#engine").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#vd").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#transmission").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#vmodel").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#vmake").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$("#year").kendoDropDownList({
-				filter: "contains",
-				optionLabel: 'Please select...',
-				dataTextField: "Name",
-				dataValueField: "ID",
-				dataSource: dataSource
-			});
-			$(document).ready(function () {
-				$("#kt_app_header_menu").kendoMenu();
-				$("#search").kendoButton({
-					themeColor: "primary",
-					enable: true,
-					icon: "search"
-				});
+            $("#series").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#description").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#engine").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#vd").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#transmission").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#vmodel").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#vmake").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $("#year").kendoDropDownList({
+                filter: "contains",
+                optionLabel: 'Please select...',
+                dataTextField: "Name",
+                dataValueField: "ID",
+                dataSource: dataSource
+            });
+            $(document).ready(function () {
+                $("#kt_app_header_menu").kendoMenu();
+                $("#search").kendoButton({
+                    themeColor: "primary",
+                    enable: true,
+                    icon: "search"
+                });
 
 
-			});
-		});
-	</script>
+            });
+        });
+    </script>
 }

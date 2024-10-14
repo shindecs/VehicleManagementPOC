@@ -46,7 +46,10 @@
 															.Name("menuImages")
 															.Items(items =>
 															{
-																items.Add().Text("Home").Url(Url.Page("/Index"));
+
+																items.Add().Text("Home").ImageUrl("/images/icon-home.png").Url(Url.Page("/Index"));
+
+
 
 																items.Add().Text("Material Part")
 																.Items(children =>
